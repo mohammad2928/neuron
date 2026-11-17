@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# PHP API
+RewriteRule ^api/ - [L]
+
+# SPA (Vite dist)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

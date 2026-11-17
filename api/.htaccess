@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Block raw data dumps if ever placed under api/
+RewriteRule \.json$ - [F,L]
+
+# CORS preflight
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^ - [R=204,L]
+
+# Route all non-file requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
